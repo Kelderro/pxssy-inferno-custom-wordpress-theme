@@ -13,7 +13,7 @@ add_action( 'wp_enqueue_scripts', 'pxssyinferno_scripts' );
  */
 function remove_storefront_sidebar() {
     if ( !is_shop() && !is_product_category() ) {
-    remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
+    	remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
     }
 }
 add_action( 'get_header', 'remove_storefront_sidebar' );
@@ -61,13 +61,15 @@ function storefront_credit() {?>
   }
 
 /**
- * Magic!
+ * On a device with a small screen a footer bar is rendered. By default this bar
+ * helps visitors to navigate to the account, search and basket pages. Visitors
+ * can open a Tidio chat by clicking on an absolute positioned button in the content
+ * area of the website. Moving this button to the footer bar will free up content
+ * space. That is why the storefront_handheld_footer_bar is overwritten.
  */
-function storefront_handheld_footer_bar_chat_link() {
-    echo '<a class="footer-chat" href="javascript:;" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
-}
-
 function storefront_handheld_footer_bar() {
+	  // The account option has been removed from the
+		// links array to make place for the chat option.
 		$links = array(
 			'search'     => array(
 				'priority' => 10,
@@ -112,3 +114,11 @@ function storefront_handheld_footer_bar() {
 		</div>
 		<?php
 	}
+
+/**
+ * Render for a custom chat option in the handheld footer.
+ * Clicking the button will open the Tidio Chat.
+ */
+function storefront_handheld_footer_bar_chat_link() {
+    echo '<a class="footer-chat" href="javascript:;" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
+}
