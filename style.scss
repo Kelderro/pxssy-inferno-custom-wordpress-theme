@@ -1,0 +1,133 @@
+/*
+Theme Name:   	PxssyInferno
+Theme URI:    	https://github.com/rkelder/storefront-child-theme
+Author:       	Kelderro
+Author URI:     https://www.kelderro.nl/
+Template:     	storefront
+Description:  	This is a child theme using the StoreFront WooThemes theme as its parent
+Version:      	1.0.0
+License:      	GNU General Public License v2 or later
+License URI:  	http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  	storefront
+Tags:         	black, white, light, two-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+Storefront is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+FontAwesome License: SIL Open Font License - http://scripts.sil.org/OFL
+Images License: GNU General Public License v2 or later
+*/
+
+.product_title {
+  font-family: 'eater';
+}
+
+.woocommerce-loop-product__title,
+.wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-title {
+  height: 38px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.storefront-breadcrumb {
+  margin: 0;
+}
+
+.storefront-full-width-content {
+  &.woocommerce-cart .entry-header,
+  &.woocommerce-checkout .entry-header,
+  &.woocommerce-account .entry-header,
+  .woocommerce-products-header {
+  padding: 0 0 2em;
+  }
+}
+
+.single-product,
+.woocommerce-account,
+.woocommerce-checkout,
+.woocommerce-cart {
+    &.right-sidebar .content-area {
+    float: none;
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+// .button {
+//   color: white;
+//   font-weight: 400;
+// }
+
+/**
+ * Footer
+ */
+.site-footer {
+  background-color: #F7F7F7;
+  font-size: 0.8rem;
+  padding: 0;
+
+  .widget-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  .footer-widgets {
+    width: auto;
+
+    .menu {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      
+      a {
+        color: #000000;
+        display: block;
+        padding: 0 0 0;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      li {
+        padding-left: 0;
+    
+        &::before {
+          content: '';
+        }
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 20px;
+  }
+}
+
+/**
+ * The WooF plugin shows an search icon on the page
+ * we do not want this plugin to be visible.
+ */
+div:has(> a.woof_show_auto_form) {
+  height: 0;
+  visibility: hidden;
+}
+
+/**
+ * Show chat icon in the mobile bottom menu
+ *
+ */
+.storefront-handheld-footer-bar ul li.chat>a::before {
+   content: "\f075";
+ }
