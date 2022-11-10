@@ -11,11 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout source Git branch
+        uses: actions/checkout@v3
       - name: Create zip bundle
         run: |
           echo 'Zipping artifact'
-          zip -r ./${{ github.sha }}.zip .
+          zip -r ./${{ github.sha }}.zip . -x ".*" "*.md"
           pwd
           ls -la
       - name: Archive artifact
