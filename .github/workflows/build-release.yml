@@ -13,6 +13,11 @@ jobs:
     steps:
       - name: Checkout source Git branch
         uses: actions/checkout@v3
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.4.10
+        with:
+          source: style.scss
+          destination: style.css
       - name: Create zip bundle
         run: |
           echo 'Zipping artifact'
