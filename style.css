@@ -105,8 +105,7 @@ div:has(> a.woof_show_auto_form) {
 }
 
 /**
- * Show chat icon in the mobile bottom menu
- *
+ * Show chat icon in the mobile footer bar menu
  */
 .storefront-handheld-footer-bar ul li.chat > a::before {
   content: "\f075";
