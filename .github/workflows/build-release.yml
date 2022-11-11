@@ -41,9 +41,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
-          body: New release for ${{ github.sha }}
+          tag_name: v1.0.${{ github.run_number }}.${{ github.run_attempt }}
+          release_name: Release v1.0.${{ github.run_number }}.${{ github.run_attempt }}
+          body: New release triggered by commit ${{ github.sha }}
           draft: false
           prerelease: false
       #         body_path: CHANGELOG.md
