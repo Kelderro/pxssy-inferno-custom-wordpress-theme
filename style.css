@@ -20,7 +20,7 @@ FontAwesome License: SIL Open Font License - http://scripts.sil.org/OFL
 Images License: GNU General Public License v2 or later
 */
 .product_title {
-  font-family: "eater";
+  font-family: "eater", "arial", " helvetica", ", " sans-serif;
 }
 
 .woocommerce-loop-product__title,
@@ -30,7 +30,7 @@ Images License: GNU General Public License v2 or later
 
 a {
   text-decoration: none;
-  color: #000000;
+  color: #000;
 }
 
 a:hover {
@@ -59,7 +59,7 @@ a:hover {
  * Footer
  */
 .site-footer {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   font-size: 0.8rem;
   padding: 0;
 }
@@ -76,9 +76,9 @@ a:hover {
   list-style-type: none;
 }
 .site-footer .footer-widgets .menu a {
-  color: #000000;
+  color: #000;
   display: block;
-  padding: 0 0 0;
+  padding: 0;
   text-decoration: none;
 }
 .site-footer .footer-widgets .menu a:hover {
