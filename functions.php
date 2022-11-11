@@ -2,7 +2,7 @@
 /**
  * Enqueue scripts and styles.
  */
-function pxssyinferno_scripts() {
+function pxssyinferno_scripts(): void {
   wp_enqueue_style( 'bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
 }
 add_action( 'wp_enqueue_scripts', 'pxssyinferno_scripts' );
@@ -11,7 +11,7 @@ add_action( 'wp_enqueue_scripts', 'pxssyinferno_scripts' );
  * Remove the storefront side bar if the current page is not
  * a shop page or a product category page.
  */
-function remove_storefront_sidebar() {
+function remove_storefront_sidebar(): void {
     if ( !is_shop() && !is_product_category() ) {
     	remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
     } 
@@ -21,7 +21,7 @@ add_action( 'get_header', 'remove_storefront_sidebar' );
 /**
  * Add Custom Fonts
  */
-function enqueue_custom_fonts() {
+function enqueue_custom_fonts(): void {
 	if(!is_admin()) {
 		wp_register_style( 'eater', 'https://fonts.googleapis.com/css2?family=Eater&display=swap' );
 		wp_enqueue_style( 'eater' );
@@ -32,7 +32,7 @@ add_action( 'wp_enqueue_scripts', 'enqueue_custom_fonts' );
 /**
  * Move the primary navigation to another place in the header by changing the priority
  */
-function child_theme_init() {
+function child_theme_init(): void {
   remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
   add_action( 'storefront_header', 'storefront_primary_navigation', 39 );
 }
@@ -41,7 +41,7 @@ function child_theme_init() {
 /**
  * Remove any widget that will not be used
  */
-function unregister_unwanted_parent_sidebars() {
+function unregister_unwanted_parent_sidebars(): void {
   // Remove the side
   unregister_sidebar('footer-4');
   unregister_sidebar('header-1');
@@ -51,7 +51,7 @@ add_action( 'widgets_init', 'unregister_unwanted_parent_sidebars', 11);
 /**
  * Override the store front credit function to place a custom Copyright message
  */
-function storefront_credit() {?>
+function storefront_credit(): void {?>
   <div class="copyright">
     <p>
       <?php echo esc_html( '&copy; ' . date( 'Y' ) . ', ' . get_bloginfo( 'name' )); ?>
@@ -67,7 +67,7 @@ function storefront_credit() {?>
  * area of the website. Moving this button to the footer bar will free up content
  * space. That is why the storefront_handheld_footer_bar is overwritten.
  */
-function storefront_handheld_footer_bar() {
+function storefront_handheld_footer_bar(): void {
 	  // The account option has been removed from the
 		// links array to make place for the chat option.
 		$links = array(
@@ -119,6 +119,6 @@ function storefront_handheld_footer_bar() {
  * Render for a custom chat option in the handheld footer.
  * Clicking the button will open the Tidio Chat.
  */
-function storefront_handheld_footer_bar_chat_link() {
+function storefront_handheld_footer_bar_chat_link(): void {
     echo '<a class="footer-chat" href="javascript:;" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
 }
