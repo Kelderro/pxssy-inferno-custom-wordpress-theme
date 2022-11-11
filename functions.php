@@ -14,7 +14,7 @@ add_action( 'wp_enqueue_scripts', 'pxssyinferno_scripts' );
 function remove_storefront_sidebar() {
     if ( !is_shop() && !is_product_category() ) {
     	remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
-    }
+    } 
 }
 add_action( 'get_header', 'remove_storefront_sidebar' );
 
