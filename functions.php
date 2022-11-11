@@ -13,7 +13,7 @@ add_action('wp_enqueue_scripts', 'pxssyinferno_scripts');
  */
 function remove_storefront_sidebar(): void {
     if (!is_shop() && !is_product_category()) {
-      remove_action('storefront_sidebar', 'storefront_get_sidebar', 10);
+        remove_action('storefront_sidebar', 'storefront_get_sidebar', 10);
     }
 }
 add_action('get_header', 'remove_storefront_sidebar');
@@ -22,10 +22,10 @@ add_action('get_header', 'remove_storefront_sidebar');
  * Add Custom Fonts
  */
 function enqueue_custom_fonts(): void {
-  if (!is_admin()) {
-    wp_register_style('eater', 'https://fonts.googleapis.com/css2?family=Eater&display=swap');
-    wp_enqueue_style('eater');
-  }
+    if (!is_admin()) {
+        wp_register_style('eater', 'https://fonts.googleapis.com/css2?family=Eater&display=swap');
+        wp_enqueue_style('eater');
+    }
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
 
@@ -55,7 +55,7 @@ function storefront_credit(): void {
     ?>
   <div class="copyright">
     <p>
-      <?php echo esc_html('&copy; '.date( 'Y' ).', '.get_bloginfo('name')); ?>
+      <?php echo esc_html('&copy; ' . date('Y') . ', ' . get_bloginfo('name')); ?>
     </p>
   </div>
     <?php
@@ -86,16 +86,17 @@ function storefront_handheld_footer_bar(): void {
       )
     );
 
-    if (did_action('woocommerce_blocks_enqueue_cart_block_scripts_after') || did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after')) {
-      return;
+    if (did_action('woocommerce_blocks_enqueue_cart_block_scripts_after')
+		 || did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after')) {
+        return;
     }
 
     if (wc_get_page_id('myaccount') === -1) {
-      unset( $links['my-account']);
+        unset($links['my-account']);
     }
 
     if (wc_get_page_id('cart') === -1) {
-      unset( $links['cart']);
+        unset($links['cart']);
     }
 
     $links = apply_filters('storefront_handheld_footer_bar_links', $links);
@@ -106,7 +107,7 @@ function storefront_handheld_footer_bar(): void {
           <li class="<?php echo esc_attr($key); ?>">
             <?php
             if ($link['callback']) {
-              call_user_func($link['callback'], $key, $link);
+                call_user_func($link['callback'], $key, $link);
             }
             ?>
           </li>
