@@ -1,3 +1,4 @@
+---
 name: build-release
 
 on:
@@ -14,7 +15,8 @@ jobs:
       - name: Checkout source Git branch
         uses: actions/checkout@v3
         with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
+          # Full git history is needed to get a proper list of changed
+          # files within `super-linter`
           fetch-depth: 0
 
       - name: Lint Code Base
@@ -55,7 +57,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           tag_name: v1.0.${{ github.run_number }}.${{ github.run_attempt }}
-          release_name: Release v1.0.${{ github.run_number }}.${{ github.run_attempt }}
+          release_name: Release
+            v1.0.${{ github.run_number }}.${{ github.run_attempt }}
           body: New release triggered by commit ${{ github.sha }}
           draft: false
           prerelease: false
