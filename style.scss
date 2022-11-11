@@ -21,7 +21,7 @@ Images License: GNU General Public License v2 or later
 */
 
 .product_title {
-  font-family: "eater", "arial"," helvetica",", "sans-serif;
+  font-family: "eater", "arial", "helvetica", "sans-serif";
 }
 
 .woocommerce-loop-product__title,
@@ -96,7 +96,7 @@ a:hover {
 
       li {
         padding-left: 0;
-    
+
         &::before {
           content: "";
         }
@@ -124,4 +124,4 @@ div:has(> a.woof_show_auto_form) {
  */
 .storefront-handheld-footer-bar ul li.chat > a::before {
   content: "\f075";
- }
+}

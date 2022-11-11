@@ -20,7 +20,7 @@ FontAwesome License: SIL Open Font License - http://scripts.sil.org/OFL
 Images License: GNU General Public License v2 or later
 */
 .product_title {
-  font-family: "eater", "arial", " helvetica", ", " sans-serif;
+  font-family: "eater", "arial", "helvetica", "sans-serif";
 }
 
 .woocommerce-loop-product__title,
