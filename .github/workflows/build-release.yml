@@ -13,17 +13,30 @@ jobs:
     steps:
       - name: Checkout source Git branch
         uses: actions/checkout@v3
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.4.10
         with:
           source: style.scss
           destination: style.css
+
       - name: Create zip bundle
         run: |
           echo 'Zipping artifact'
           zip -r ./${{ github.sha }}.zip . -x ".*" "*.md"
           pwd
           ls -la
+
       - name: Archive artifact
         uses: actions/upload-artifact@v2
         with:
@@ -47,10 +60,12 @@ jobs:
           draft: false
           prerelease: false
       #         body_path: CHANGELOG.md
+
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
           name: zipped-bundle
+
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         env:
