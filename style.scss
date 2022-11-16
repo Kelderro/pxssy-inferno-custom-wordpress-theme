@@ -20,10 +20,6 @@ FontAwesome License: SIL Open Font License - http://scripts.sil.org/OFL
 Images License: GNU General Public License v2 or later
 */
 
-.product_title {
-  font-family: "eater", "Arial", sans-serif;
-}
-
 .woocommerce-loop-product__title,
 .wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-title {
   height: 38px;
@@ -32,10 +28,6 @@ Images License: GNU General Public License v2 or later
 a {
   text-decoration: none;
   color: #000;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 .storefront-breadcrumb {
@@ -48,6 +40,48 @@ a:hover {
   &.woocommerce-account .entry-header,
   .woocommerce-products-header {
     padding: 0 0 2em;
+  }
+}
+
+/**
+ * Change the default position of the handheld menu toggle button
+ */
+button {
+  &.menu-toggle {
+    margin-right: 42px;
+    margin-top: 18px;
+  }
+}
+
+/**
+ * Everything that has to do with only the homepage
+ */
+.page-template-template-homepage {
+  /**
+  * Move the shop button the first banner down
+  */
+  @media (min-width: 479px) {
+    .hentry .entry-content .wp-block-cover .wp-block-cover__inner-container {
+      padding: 0;
+      bottom: 2rem;
+      position: absolute;
+
+      .wp-block-buttons>.wp-block-button.wp-block-button__width-25 {
+          width: calc(27% - var(--wp--style--block-gap, 0.5em) * 0.75);
+      }
+    }
+  }
+
+  /**
+    * On the front page the shop bar does not look good on a mobile
+    * as the text is wrapper.
+    */
+  .wp-block-buttons>.wp-block-button.wp-block-button__width-25 {
+    width: calc(66% - var(--wp--style--block-gap, 0.5em) * 0.75);
+
+    a {
+      box-shadow: 0 0 16px 10px #000;
+    }
   }
 }
 
