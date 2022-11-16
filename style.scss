@@ -69,7 +69,7 @@ a:hover {
 .single-product div.product .images,
 .single-product div.product .summary,
 .single-product div.product .woocommerce-product-gallery {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /**
@@ -177,43 +177,42 @@ div:has(> a.woof_show_auto_form) {
        * visible. The following CSS blocks are responsible for showing the line is the
        * the visitor hover over the menu item.
        */
-      li>a::before {
+      li > a::before {
         content: "";
         position: absolute;
         left: 15px;
         right: 100%;
         bottom: 0;
         display: block;
-        border-bottom: 2px solid currentColor;
-        transition: right .3s ease;
-      }
-
-      li:hover, 
-      .current_page_item {
-        > a::before {
-          right: 15px;
-        }
+        border-bottom: 2px solid currentcolor;
+        transition: right 0.3s ease;
       }
 
       .sub-menu {
         box-shadow: 0 10px 20px #00000017;
         transform: translate3d(0, -12px, 0);
-
         padding: 5px 0;
 
-        li>a::before {
+        li > a::before {
           left: 11px;
         }
 
         li:hover,
         .current_page_item {
-          >a::before {
+          > a::before {
             right: 11px;
           }
         }
 
         a {
           padding: 10px;
+        }
+      }
+
+      li:hover,
+      .current_page_item {
+        > a::before {
+          right: 15px;
         }
       }
     }
