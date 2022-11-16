@@ -35,3 +35,4 @@ jobs:
         with:
           source: style.scss
           destination: style.css
+          sourceComments: true
