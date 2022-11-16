@@ -1,5 +1,5 @@
 ---
-name: Build release
+name: Build Release
 on:
   push:
     branches:
@@ -29,7 +29,6 @@ jobs:
         with:
           source: style.scss
           destination: style.css
-          sourceComments: true
 
       - name: Create zip bundle
         run: |
