@@ -29,6 +29,7 @@ jobs:
         with:
           source: style.scss
           destination: style.css
+          sourceComments: true
 
       - name: Create zip bundle
         run: |
