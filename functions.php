@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Current server is unable to execute image regeneration and being responsive at the
+ * same time. The following line disable image regeneration. Please be aware that
+ * to get the images regenerated you will need to use a plugin that can do it.
+ * Long term vision: Use a S3 bucket for image storage.
+ */
+add_filter('woocommerce_background_image_regeneration', '__return_false');
+
 /**
  * Enqueue scripts and styles.
  */
