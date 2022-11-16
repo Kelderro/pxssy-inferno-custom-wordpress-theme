@@ -39,13 +39,19 @@ function enqueue_custom_fonts(): void {
 add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
 
 /**
- * Move the primary navigation to another place in the header by changing the priority
+ * Default menu of storefront is not sufficient. Hide for example the search
+ * from the header and push everything on a single line.
  */
-function child_theme_init(): void {
+function custom_header_layout(): void {
     remove_action('storefront_header', 'storefront_primary_navigation', 50);
-    add_action('storefront_header', 'storefront_primary_navigation', 39);
+    remove_action('storefront_header', 'storefront_product_search', 40);
+    remove_action('storefront_header', 'storefront_primary_navigation_wrapper', 42);
+    remove_action('storefront_header', 'storefront_primary_navigation', 1);
+    remove_action('storefront_header', 'storefront_header_cart', 60);
+    remove_action('storefront_header', 'storefront_primary_navigation_wrapper_close', 68);
+    add_action('storefront_header', 'storefront_header_cart', 40);
 }
-//add_action( 'init', 'child_theme_init' );
+add_action( 'init', 'custom_header_layout' );
 
 /**
  * Remove any widget that will not be used
