@@ -31,16 +31,25 @@ jobs:
           destination: style.css
           sourceComments: true
       - name: Create payload folder for the artifact
-        run: mkdir pxssyinferno # Important to create the payload folder with this specific name
-                                # as it will be zipped into the release asset. If the folder name
-                                # is different WordPress will create a new theme instead of
-                                # overwriting the theme.
+        run:
+          mkdir pxssyinferno # Important to create the payload folder with this specific name
+          # as it will be zipped into the release asset. If the folder name
+          # is different WordPress will create a new theme instead of
+          # overwriting the theme.
 
       - name: Moving files to the payload folder
         run: cp -v *.{php,png,css} pxssyinferno/
 
+      - name: Update version number in style.css
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "Version:      	1.0.0"
+          replace: "Version:      	1.0.${{ github.run_number }}.${{ github.run_attempt }}"
+          include: "pxssyinferno/style.css"
+          regex: false
+
       - name: Create zip bundle from the payload folder
-        run: zip -r ./${{ github.sha }}.zip ./pxssyinferno/ 
+        run: zip -r ./${{ github.sha }}.zip ./pxssyinferno/
 
       - name: Upload zip bundle as artifact
         uses: actions/upload-artifact@v3
@@ -66,7 +75,6 @@ jobs:
           body: New release triggered by commit ${{ github.sha }}
           draft: false
           prerelease: false
-      #         body_path: CHANGELOG.md
 
       - name: Download artifact
         uses: actions/download-artifact@v3
