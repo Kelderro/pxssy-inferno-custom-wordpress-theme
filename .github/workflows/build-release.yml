@@ -45,7 +45,7 @@ jobs:
         with:
           find: "Version:      	1.0.0"
           replace: "Version:      	1.0.${{ github.run_number }}.${{ github.run_attempt }}"
-          include: "pxssyinferno/style.css"
+          include: "**/style.css"
           regex: false
 
       - name: Create zip bundle from the payload folder
