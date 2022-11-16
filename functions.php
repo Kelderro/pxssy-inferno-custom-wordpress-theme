@@ -40,10 +40,11 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
 
 /**
  * Default menu of storefront is not sufficient. Hide for example the search
- * from the header and push everything on a single line.
+ * from the header and push everything on a single line. The action 
+ * storefront_primary_navigation is not removed as the mobile menu is 
+ * depending on that one.
  */
 function custom_header_layout(): void {
-    remove_action('storefront_header', 'storefront_primary_navigation', 50);
     remove_action('storefront_header', 'storefront_product_search', 40);
     remove_action('storefront_header', 'storefront_primary_navigation_wrapper', 42);
     remove_action('storefront_header', 'storefront_primary_navigation', 1);
