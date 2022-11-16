@@ -30,13 +30,19 @@ jobs:
           source: style.scss
           destination: style.css
           sourceComments: true
+      - name: Create payload folder for the artifact
+        run: mkdir pxssyinferno # Important to create the payload folder with this specific name
+                                # as it will be zipped into the release asset. If the folder name
+                                # is different WordPress will create a new theme instead of
+                                # overwriting the theme.
 
-      - name: Create zip bundle
-        run: |
-          echo 'Zipping artifact'
-          zip -r ./${{ github.sha }}.zip . -x ".*" "*.md" "super-linter.log" "*.scss"
+      - name: Moving files to the payload folder
+        run: cp -v *.{php,png,css} pxssyinferno/
 
-      - name: Archive artifact
+      - name: Create zip bundle from the payload folder
+        run: zip -r ./${{ github.sha }}.zip ./pxssyinferno/ 
+
+      - name: Upload zip bundle as artifact
         uses: actions/upload-artifact@v3
         with:
           name: zipped-bundle
