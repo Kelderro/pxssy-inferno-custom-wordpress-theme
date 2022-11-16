@@ -34,9 +34,7 @@ jobs:
       - name: Create zip bundle
         run: |
           echo 'Zipping artifact'
-          zip -r ./${{ github.sha }}.zip . -x ".*" "*.md"
-          pwd
-          ls -la
+          zip -r ./${{ github.sha }}.zip . -x ".*" "*.md" "super-linter.log" "*.scss"
 
       - name: Archive artifact
         uses: actions/upload-artifact@v3
