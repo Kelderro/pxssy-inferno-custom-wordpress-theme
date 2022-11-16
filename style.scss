@@ -63,6 +63,30 @@ a:hover {
 }
 
 /**
+ * Reduce the size above the woo commerce tab wrapper
+ * There was a lot of empty white space
+ */
+.single-product div.product .images,
+.single-product div.product .summary,
+.single-product div.product .woocommerce-product-gallery {
+  margin-bottom: 0px;
+}
+
+/**
+ * Reduce the size of the Google pay banner
+ */
+#wcpay-payment-request-wrapper {
+  width: 138px;
+}
+
+/**
+ * Hide product meta information like SKU and categories
+ */
+.product_meta {
+  display: none;
+}
+
+/**
  * Footer
  */
 .site-footer {
@@ -120,8 +144,78 @@ div:has(> a.woof_show_auto_form) {
 }
 
 /**
+ * Hide the title on top of the homepage template
+ */
+.page-template-template-homepage .hentry.type-page .entry-header {
+  display: none;
+}
+
+/**
  * Show chat icon in the mobile footer bar menu
  */
 .storefront-handheld-footer-bar ul li.chat > a::before {
   content: "\f075";
+}
+
+@media (min-width: 768px) {
+  .woocommerce-active .site-header .site-header-cart {
+    width: 128px;
+  }
+
+  .storefront-secondary-navigation.woocommerce-active .site-header .secondary-navigation {
+    padding-top: 15px;
+
+    .menu {
+      font-size: 1rem;
+
+      ul a {
+        background: #fff;
+      }
+
+      /**
+       * Block of code is to show a line under each menu item. By default this line is not
+       * visible. The following CSS blocks are responsible for showing the line is the
+       * the visitor hover over the menu item.
+       */
+      li>a::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        right: 100%;
+        bottom: 0;
+        display: block;
+        border-bottom: 2px solid currentColor;
+        transition: right .3s ease;
+      }
+
+      li:hover, 
+      .current_page_item {
+        > a::before {
+          right: 15px;
+        }
+      }
+
+      .sub-menu {
+        box-shadow: 0 10px 20px #00000017;
+        transform: translate3d(0, -12px, 0);
+
+        padding: 5px 0;
+
+        li>a::before {
+          left: 11px;
+        }
+
+        li:hover,
+        .current_page_item {
+          >a::before {
+            right: 11px;
+          }
+        }
+
+        a {
+          padding: 10px;
+        }
+      }
+    }
+  }
 }
