@@ -172,6 +172,11 @@ div:has(> a.woof_show_auto_form) {
         background: #fff;
       }
 
+      /**
+       * Block of code is to show a line under each menu item. By default this line is not
+       * visible. The following CSS blocks are responsible for showing the line is the
+       * the visitor hover over the menu item.
+       */
       li>a::before {
         content: "";
         position: absolute;
@@ -194,8 +199,7 @@ div:has(> a.woof_show_auto_form) {
         box-shadow: 0 10px 20px #00000017;
         transform: translate3d(0, -12px, 0);
 
-        padding-bottom: 5px;
-        padding-top: 5px;
+        padding: 5px 0;
 
         li>a::before {
           left: 11px;
