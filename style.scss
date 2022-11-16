@@ -188,6 +188,13 @@ div:has(> a.woof_show_auto_form) {
         transition: right 0.3s ease;
       }
 
+      li:hover,
+      .current_page_item {
+        > a::before {
+          right: 15px;
+        }
+      }
+
       .sub-menu {
         box-shadow: 0 10px 20px #00000017;
         transform: translate3d(0, -12px, 0);
@@ -206,13 +213,6 @@ div:has(> a.woof_show_auto_form) {
 
         a {
           padding: 10px;
-        }
-      }
-
-      li:hover,
-      .current_page_item {
-        > a::before {
-          right: 15px;
         }
       }
     }
