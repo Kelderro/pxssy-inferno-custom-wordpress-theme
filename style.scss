@@ -127,7 +127,7 @@ button {
   .wp-block-buttons>.wp-block-button.wp-block-button__width-25 {
     /* stylelint-disable custom-property-pattern */
     width: calc(66% - var(--wp--style--block-gap, 0.5em) * 0.75);
-    /* stylelint-disable custom-property-pattern */
+    /* stylelint-enable custom-property-pattern */
 
     a {
       box-shadow: 0 0 16px 10px #000;
