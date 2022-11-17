@@ -38,7 +38,7 @@ jobs:
           # overwriting the theme.
 
       - name: Moving files to the payload folder
-        run: cp -v *.{php,png,css} pxssyinferno/
+        run: cp -v ./*.{php,png,css} pxssyinferno/
 
       - name: Update version number in style.css
         uses: jacobtomlinson/gha-find-replace@v2
