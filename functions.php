@@ -107,10 +107,6 @@ function storefront_handheld_footer_bar(): void {
         return;
     }
 
-    if (wc_get_page_id('myaccount') === -1) {
-        unset($links['my-account']);
-    }
-
     if (wc_get_page_id('cart') === -1) {
         unset($links['cart']);
     }
@@ -133,10 +129,15 @@ function storefront_handheld_footer_bar(): void {
     <?php
 }
 
+	function storefront_handheld_footer_bar_search() {
+		echo '<a>' . esc_attr__( 'Search', 'storefront' ) . '</a>';
+		storefront_product_search();
+	}
+
 /**
  * Render for a custom chat option in the handheld footer.
  * Clicking the button will open the Tidio Chat.
  */
 function storefront_handheld_footer_bar_chat_link(): void {
-    echo '<a class="footer-chat" href="javascript:;" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
+    echo '<a class="footer-chat" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
 }
