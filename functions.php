@@ -40,8 +40,8 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
 
 /**
  * Default menu of storefront is not sufficient. Hide for example the search
- * from the header and push everything on a single line. The action 
- * storefront_primary_navigation is not removed as the mobile menu is 
+ * from the header and push everything on a single line. The action
+ * storefront_primary_navigation is not removed as the mobile menu is
  * depending on that one.
  */
 function custom_header_layout(): void {
@@ -52,13 +52,13 @@ function custom_header_layout(): void {
     remove_action('storefront_header', 'storefront_primary_navigation_wrapper_close', 68);
     add_action('storefront_header', 'storefront_header_cart', 40);
 }
-add_action( 'init', 'custom_header_layout' );
+add_action('init', 'custom_header_layout');
 
 /**
  * Remove any widget that will not be used
  */
 function unregister_unwanted_parent_sidebars(): void {
-  // Remove the side
+    // Remove the side widget that we do not use
     unregister_sidebar('footer-4');
     unregister_sidebar('header-1');
 }
@@ -103,7 +103,8 @@ function storefront_handheld_footer_bar(): void {
     );
 
     if (did_action('woocommerce_blocks_enqueue_cart_block_scripts_after') ||
-		    did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after')) {
+        did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after')
+    ) {
         return;
     }
 
@@ -135,8 +136,8 @@ function storefront_handheld_footer_bar(): void {
  * the SEO score of the site.
  */
 function storefront_handheld_footer_bar_search(): void {
-	echo '<a href="javascript:;">' . esc_attr__( 'Search', 'storefront' ) . '</a>';
-	storefront_product_search();
+  echo '<a href="javascript:;">' . esc_attr__('Search', 'storefront') . '</a>';
+  storefront_product_search();
 }
 
 /**
