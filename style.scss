@@ -54,73 +54,6 @@ button {
 }
 
 /**
- * Everything that has to do with only the homepage
- */
-.page-template-template-homepage {
-  /**
-  * Move the shop button the first banner down
-  */
-  @media (min-width: 479px) {
-    .hentry .entry-content .wp-block-cover .wp-block-cover__inner-container {
-      padding: 0;
-      bottom: 2rem;
-      position: absolute;
-
-      .wp-block-buttons>.wp-block-button.wp-block-button__width-25 {
-          width: calc(27% - var(--wp--style--block-gap, 0.5em) * 0.75);
-      }
-    }
-  }
-
-  /**
-    * On the front page the shop bar does not look good on a mobile
-    * as the text is wrapper.
-    */
-  .wp-block-buttons>.wp-block-button.wp-block-button__width-25 {
-    width: calc(66% - var(--wp--style--block-gap, 0.5em) * 0.75);
-
-    a {
-      box-shadow: 0 0 16px 10px #000;
-    }
-  }
-}
-
-.single-product,
-.woocommerce-account,
-.woocommerce-checkout,
-.woocommerce-cart {
-  &.right-sidebar .content-area {
-    float: none;
-    margin-right: 0;
-    width: 100%;
-  }
-}
-
-/**
- * Reduce the size above the woo commerce tab wrapper
- * There was a lot of empty white space
- */
-.single-product div.product .images,
-.single-product div.product .summary,
-.single-product div.product .woocommerce-product-gallery {
-  margin-bottom: 0;
-}
-
-/**
- * Reduce the size of the Google pay banner
- */
-#wcpay-payment-request-wrapper {
-  width: 138px;
-}
-
-/**
- * Hide product meta information like SKU and categories
- */
-.product_meta {
-  display: none;
-}
-
-/**
  * Footer
  */
 .site-footer {
@@ -166,6 +99,75 @@ button {
     text-align: center;
     padding-top: 20px;
   }
+}
+
+/**
+ * Everything that has to do with only the homepage
+ */
+.page-template-template-homepage {
+  /**
+  * Move the shop button the first banner down
+  */
+  @media (min-width: 479px) {
+    .hentry .entry-content .wp-block-cover .wp-block-cover__inner-container {
+      padding: 0;
+      bottom: 2rem;
+      position: absolute;
+
+      .wp-block-buttons > .wp-block-button.wp-block-button__width-25 {
+        width: calc(27% - var(--wp--style--block-gap, 0.5em) * 0.75);
+      }
+    }
+  }
+
+  /**
+    * On the front page the shop bar does not look good on a mobile
+    * as the text is wrapper.
+    */
+  .wp-block-buttons>.wp-block-button.wp-block-button__width-25 {
+    /* stylelint-disable custom-property-pattern */
+    width: calc(66% - var(--wp--style--block-gap, 0.5em) * 0.75);
+    /* stylelint-disable custom-property-pattern */
+
+    a {
+      box-shadow: 0 0 16px 10px #000;
+    }
+  }
+}
+
+.single-product,
+.woocommerce-account,
+.woocommerce-checkout,
+.woocommerce-cart {
+  &.right-sidebar .content-area {
+    float: none;
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+/**
+ * Reduce the size above the woo commerce tab wrapper
+ * There was a lot of empty white space
+ */
+.single-product div.product .images,
+.single-product div.product .summary,
+.single-product div.product .woocommerce-product-gallery {
+  margin-bottom: 0;
+}
+
+/**
+ * Reduce the size of the Google pay banner
+ */
+#wcpay-payment-request-wrapper {
+  width: 138px;
+}
+
+/**
+ * Hide product meta information like SKU and categories
+ */
+.product_meta {
+  display: none;
 }
 
 /**
@@ -222,13 +224,6 @@ div:has(> a.woof_show_auto_form) {
         transition: right 0.3s ease;
       }
 
-      li:hover,
-      .current_page_item {
-        > a::before {
-          right: 15px;
-        }
-      }
-
       .sub-menu {
         box-shadow: 0 10px 20px #00000017;
         transform: translate3d(0, -12px, 0);
@@ -247,6 +242,13 @@ div:has(> a.woof_show_auto_form) {
 
         a {
           padding: 10px;
+        }
+      }
+
+      li:hover,
+      .current_page_item {
+        >a::before {
+          right: 15px;
         }
       }
     }
