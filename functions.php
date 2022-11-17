@@ -129,10 +129,15 @@ function storefront_handheld_footer_bar(): void {
     <?php
 }
 
-	function storefront_handheld_footer_bar_search() {
-		echo '<a>' . esc_attr__( 'Search', 'storefront' ) . '</a>';
-		storefront_product_search();
-	}
+/**
+ * Override the handheld search bar as the orignal source
+ * includes an empty href which has a negative impact on
+ * the SEO score of the site.
+ */
+function storefront_handheld_footer_bar_search() {
+	echo '<a href="javascript:;">' . esc_attr__( 'Search', 'storefront' ) . '</a>';
+	storefront_product_search();
+}
 
 /**
  * Render for a custom chat option in the handheld footer.
