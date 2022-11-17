@@ -54,54 +54,6 @@ button {
 }
 
 /**
- * Footer
- */
-.site-footer {
-  background-color: #f7f7f7;
-  font-size: 0.8rem;
-  padding: 0;
-
-  .widget-title {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-  }
-
-  .footer-widgets {
-    width: auto;
-
-    .menu {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-
-      a {
-        color: #000;
-        display: block;
-        padding: 0;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      li {
-        padding-left: 0;
-
-        &::before {
-          content: "";
-        }
-      }
-    }
-  }
-
-  .copyright {
-    text-align: center;
-    padding-top: 20px;
-  }
-}
-
-/**
  * Everything that has to do with only the homepage
  */
 .page-template-template-homepage {
@@ -124,10 +76,8 @@ button {
     * On the front page the shop bar does not look good on a mobile
     * as the text is wrapper.
     */
-  .wp-block-buttons>.wp-block-button.wp-block-button__width-25 {
-    /* stylelint-disable custom-property-pattern */
-    width: calc(66% - var(--wp--style--block-gap, 0.5em) * 0.75);
-    /* stylelint-enable custom-property-pattern */
+  .wp-block-buttons > .wp-block-button.wp-block-button__width-25 {
+    width: calc(66% - var(--wp--style--block-gap, 0.5em) * 0.75); /* stylelint-disable-line custom-property-pattern */
 
     a {
       box-shadow: 0 0 16px 10px #000;
@@ -252,5 +202,53 @@ div:has(> a.woof_show_auto_form) {
         }
       }
     }
+  }
+}
+
+/**
+ * Footer
+ */
+.site-footer {
+  background-color: #f7f7f7;
+  font-size: 0.8rem;
+  padding: 0;
+
+  .widget-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  .footer-widgets {
+    width: auto;
+
+    .menu {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      a {
+        color: #000;
+        display: block;
+        padding: 0;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      li {
+        padding-left: 0;
+
+        &::before {
+          content: "";
+        }
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 20px;
   }
 }
