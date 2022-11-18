@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Lint Code Base
-        uses: github/super-linter@v4
+        uses: github/super-linter/slim@v4
         continue-on-error: true
         env:
           # Validate all files everytime
