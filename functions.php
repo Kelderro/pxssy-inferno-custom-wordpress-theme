@@ -1,14 +1,10 @@
 <?php
-/**
- * Author:       	Kelderro
- * Author URI:   	https://www.kelderro.nl/
- * Source:       	https: //github.com/Kelderro/pxssy-inferno-custom-wordpress-theme
- */
 
 /**
  * Enqueue scripts and styles.
  */
-function pxssyinferno_scripts(): void {
+function pxssyinferno_scripts(): void
+{
     wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
 }
 add_action('wp_enqueue_scripts', 'pxssyinferno_scripts');
@@ -25,7 +21,8 @@ add_filter('woocommerce_background_image_regeneration', '__return_false');
  * Remove the storefront side bar if the current page is not
  * a shop page or a product category page.
  */
-function remove_storefront_sidebar(): void {
+function remove_storefront_sidebar(): void
+{
     if (!is_shop() && !is_product_category()) {
         remove_action('storefront_sidebar', 'storefront_get_sidebar', 10);
     }
@@ -35,7 +32,8 @@ add_action('get_header', 'remove_storefront_sidebar');
 /**
  * Add Custom Fonts
  */
-function enqueue_custom_fonts(): void {
+function enqueue_custom_fonts(): void
+{
     if (!is_admin()) {
         wp_register_style('eater', 'https://fonts.googleapis.com/css2?family=Eater&display=swap');
         wp_enqueue_style('eater');
@@ -49,7 +47,8 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
  * storefront_primary_navigation is not removed as the mobile menu is
  * depending on that one.
  */
-function custom_header_layout(): void {
+function custom_header_layout(): void
+{
     remove_action('storefront_header', 'storefront_product_search', 40);
     remove_action('storefront_header', 'storefront_primary_navigation_wrapper', 42);
     remove_action('storefront_header', 'storefront_primary_navigation', 1);
@@ -62,7 +61,8 @@ add_action('init', 'custom_header_layout');
 /**
  * Remove any widget that will not be used
  */
-function unregister_unwanted_parent_sidebars(): void {
+function unregister_unwanted_parent_sidebars(): void
+{
     // Remove the side widget that we do not use
     unregister_sidebar('footer-4');
     unregister_sidebar('header-1');
@@ -72,7 +72,8 @@ add_action('widgets_init', 'unregister_unwanted_parent_sidebars', 11);
 /**
  * Override the store front credit function to place a custom Copyright message
  */
-function storefront_credit(): void {
+function storefront_credit(): void
+{
     ?>
   <div class="copyright">
     <p>
@@ -89,7 +90,8 @@ function storefront_credit(): void {
  * area of the website. Moving this button to the footer bar will free up content
  * space. That is why the storefront_handheld_footer_bar is overwritten.
  */
-function storefront_handheld_footer_bar(): void {
+function storefront_handheld_footer_bar(): void
+{
     // The account option has been removed from the
     // links array to make place for the chat option.
     $links = array(
@@ -107,9 +109,8 @@ function storefront_handheld_footer_bar(): void {
       )
     );
 
-    if (
-        did_action('woocommerce_blocks_enqueue_cart_block_scripts_after') ||
-        did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after')
+    if (did_action('woocommerce_blocks_enqueue_cart_block_scripts_after')
+        || did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after')
     ) {
         return;
     }
@@ -141,7 +142,8 @@ function storefront_handheld_footer_bar(): void {
  * includes an empty href which has a negative impact on
  * the SEO score of the site.
  */
-function storefront_handheld_footer_bar_search(): void {
+function storefront_handheld_footer_bar_search(): void
+{
     echo '<a href="javascript:;">' . esc_attr__('Search', 'storefront') . '</a>';
     storefront_product_search();
 }
@@ -150,6 +152,7 @@ function storefront_handheld_footer_bar_search(): void {
  * Render for a custom chat option in the handheld footer.
  * Clicking the button will open the Tidio Chat.
  */
-function storefront_handheld_footer_bar_chat_link(): void {
+function storefront_handheld_footer_bar_chat_link(): void
+{
     echo '<a class="footer-chat" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
 }
