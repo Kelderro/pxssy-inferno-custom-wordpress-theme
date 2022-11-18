@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
 
 /**
  * Enqueue scripts and styles.
@@ -109,9 +109,10 @@ function storefront_handheld_footer_bar(): void
       )
     );
 
-    if (did_action('woocommerce_blocks_enqueue_cart_block_scripts_after')
-        || did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after')
-    ) {
+    $enqueue_cart_block_scripts_after = did_action('woocommerce_blocks_enqueue_cart_block_scripts_after');
+    $enqueue_checkout_block_scripts_after = did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after');
+
+    if ($enqueue_cart_block_scripts_after || $enqueue_checkout_block_scripts_after) {
         return;
     }
 

@@ -67,7 +67,7 @@ button {
       position: absolute;
 
       .wp-block-buttons > .wp-block-button.wp-block-button__width-25 {
-        width: calc(27% - var(--wp--style--block-gap, 0.5em) * 0.75); /* stylelint-disable-line custom-property-pattern max-line-length */
+        width: calc(27% - var(--wp--style--block-gap, 0.5em) * 0.75); /* stylelint-disable-line custom-property-pattern */ /* stylelint-disable-line max-line-length */
       }
     }
   }
