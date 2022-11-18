@@ -17,10 +17,14 @@ jobs:
           fetch-depth: 0
 
       - name: Lint Code Base
-        uses: github/super-linter@v4
+        uses: github/super-linter/slim@v4
         continue-on-error: true
         env:
-          VALIDATE_ALL_CODEBASE: true # Validate all files everytime
+          # Validate all files everytime
+          VALIDATE_ALL_CODEBASE: true
+          # Function not found issues when running
+          # PHPStan against a WordPress child theme
+          VALIDATE_PHP_PHPSTAN: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -30,21 +34,19 @@ jobs:
           source: style.scss
           destination: style.css
           sourceComments: true
+      # Create a payload folder with the specific name (pxssyinferno)
+      # A different name will cause WordPress to think it is another theme
       - name: Create payload folder for the artifact
-        run:
-          mkdir pxssyinferno # Important to create the payload folder with this specific name
-          # as it will be zipped into the release asset. If the folder name
-          # is different WordPress will create a new theme instead of
-          # overwriting the theme.
+        run: mkdir pxssyinferno
 
       - name: Moving files to the payload folder
-        run: cp -v *.{php,png,css} pxssyinferno/
+        run: cp -v ./*.{php,png,css} pxssyinferno/
 
       - name: Update version number in style.css
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: "Version:      	1.0.0"
-          replace: "Version:      	1.0.${{ github.run_number }}.${{ github.run_attempt }}"
+          replace: "Version:      	1.0.${{ github.run_number }}.${{ github.run_attempt }}" # yamllint disable-line rule:line-length
           include: "**/style.css"
           regex: false
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<psalm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://getpsalm.org/schema/config"
+  xmlns="https://getpsalm.org/schema/config">
+  <issueHandlers>
+    <UndefinedFunction>
+      <errorLevel type="suppress">
+        <referencedFunction name="add_filter" />
+        <referencedFunction name="apply_filters" />
+        <referencedFunction name="wp_enqueue_style" />
+        <referencedFunction name="is_shop" />
+        <referencedFunction name="is_product_category" />
+        <referencedFunction name="add_action" />
+        <referencedFunction name="did_action" />
+        <referencedFunction name="remove_action" />
+        <referencedFunction name="is_admin" />
+        <referencedFunction name="wp_register_style" />
+        <referencedFunction name="unregister_sidebar" />
+        <referencedFunction name="esc_attr" />
+        <referencedFunction name="esc_html" />
+        <referencedFunction name="get_bloginfo" />
+        <referencedFunction name="wc_get_page_id" />
+        <referencedFunction name="esc_attr__" />
+        <referencedFunction name="storefront_product_search" />
+      </errorLevel>
+    </UndefinedFunction>
+  </issueHandlers>
+</psalm>
