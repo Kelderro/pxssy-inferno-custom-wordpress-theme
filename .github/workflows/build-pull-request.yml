@@ -6,7 +6,8 @@ on:
 
 # This allows a subsequently queued workflow run to interrupt previous runs
 concurrency:
-  group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+  group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label
+    || github.head_ref || github.ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -26,8 +27,11 @@ jobs:
         uses: github/super-linter@v4
         continue-on-error: true
         env:
-          VALIDATE_ALL_CODEBASE: true # Validate all files everytime
-          VALIDATE_PHP_PHPSTAN: false # Function not found issues when running PHPStan against a WordPress child theme
+          # Validate all files everytime
+          VALIDATE_ALL_CODEBASE: true
+          # Function not found issues when running
+          # PHPStan against a WordPress child theme
+          VALIDATE_PHP_PHPSTAN: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

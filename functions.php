@@ -1,12 +1,9 @@
 <?php
-
 /**
- * Current server is unable to execute image regeneration and being responsive at the
- * same time. The following line disable image regeneration. Please be aware that
- * to get the images regenerated you will need to use a plugin that can do it.
- * Long term vision: Use a S3 bucket for image storage.
+ * Author:       	Kelderro
+ * Author URI:   	https://www.kelderro.nl/
+ * Source:       	https: //github.com/Kelderro/pxssy-inferno-custom-wordpress-theme
  */
-add_filter('woocommerce_background_image_regeneration', '__return_false');
 
 /**
  * Enqueue scripts and styles.
@@ -15,6 +12,14 @@ function pxssyinferno_scripts(): void {
     wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
 }
 add_action('wp_enqueue_scripts', 'pxssyinferno_scripts');
+
+/**
+ * Current server is unable to execute image regeneration and being responsive at the
+ * same time. The following line disable image regeneration. Please be aware that
+ * to get the images regenerated you will need to use a plugin that can do it.
+ * Long term vision: Use a S3 bucket for image storage.
+ */
+add_filter('woocommerce_background_image_regeneration', '__return_false');
 
 /**
  * Remove the storefront side bar if the current page is not
@@ -102,7 +107,8 @@ function storefront_handheld_footer_bar(): void {
       )
     );
 
-    if (did_action('woocommerce_blocks_enqueue_cart_block_scripts_after') ||
+    if (
+        did_action('woocommerce_blocks_enqueue_cart_block_scripts_after') ||
         did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after')
     ) {
         return;
@@ -136,8 +142,8 @@ function storefront_handheld_footer_bar(): void {
  * the SEO score of the site.
  */
 function storefront_handheld_footer_bar_search(): void {
-  echo '<a href="javascript:;">' . esc_attr__('Search', 'storefront') . '</a>';
-  storefront_product_search();
+    echo '<a href="javascript:;">' . esc_attr__('Search', 'storefront') . '</a>';
+    storefront_product_search();
 }
 
 /**
