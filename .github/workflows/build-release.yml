@@ -46,7 +46,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: "Version:      	1.0.0"
-          replace: "Version:      	1.0.${{ github.run_number }}.${{ github.run_attempt }}"
+          replace: "Version:      	1.0.${{ github.run_number }}.${{ github.run_attempt }}" # yamllint disable-line rule:line-length
           include: "**/style.css"
           regex: false
 
