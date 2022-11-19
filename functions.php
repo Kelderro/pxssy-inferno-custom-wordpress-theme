@@ -71,7 +71,7 @@ function custom_homepage_layout(): void
     remove_action('homepage', 'storefront_on_sale_products', 60);
     remove_action('homepage', 'storefront_best_selling_products', 70);
 }
-add_action('init', 'custom_homepage_layout');
+add_action('homepage', 'custom_homepage_layout');
 
 /**
  * Remove any widget that will not be used
