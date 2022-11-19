@@ -64,14 +64,14 @@ add_action('init', 'custom_header_layout');
  */
 function custom_homepage_layout(): void
 {
-    remove_action('storefront_product_categories', 20);
-    remove_action('storefront_recent_products', 30);
-    remove_action('storefront_featured_products', 40);
-    remove_action('storefront_popular_products', 50);
-    remove_action('storefront_on_sale_products', 60);
-    remove_action('storefront_best_selling_products', 70);
+    remove_action('homepage', 'storefront_product_categories', 20);
+    remove_action('homepage', 'storefront_recent_products', 30);
+    remove_action('homepage', 'storefront_featured_products', 40);
+    remove_action('homepage', 'storefront_popular_products', 50);
+    remove_action('homepage', 'storefront_on_sale_products', 60);
+    remove_action('homepage', 'storefront_best_selling_products', 70);
 }
-add_action('homepage', 'custom_homepage_layout');
+add_action('init', 'custom_homepage_layout');
 
 /**
  * Remove any widget that will not be used
