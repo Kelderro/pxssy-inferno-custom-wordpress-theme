@@ -155,5 +155,5 @@ function storefront_handheld_footer_bar_search(): void
  */
 function storefront_handheld_footer_bar_chat_link(): void
 {
-    echo '<a class="footer-chat" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
+    echo '<a href="javascript:;" class="footer-chat" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
 }
