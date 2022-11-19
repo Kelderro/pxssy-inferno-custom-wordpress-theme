@@ -5,7 +5,7 @@
  */
 function pxssyinferno_scripts(): void
 {
-    wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
+  wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
 }
 add_action('wp_enqueue_scripts', 'pxssyinferno_scripts');
 
@@ -23,9 +23,9 @@ add_filter('woocommerce_background_image_regeneration', '__return_false');
  */
 function remove_storefront_sidebar(): void
 {
-    if (!is_shop() && !is_product_category()) {
-        remove_action('storefront_sidebar', 'storefront_get_sidebar', 10);
-    }
+  if (!is_shop() && !is_product_category()) {
+    remove_action('storefront_sidebar', 'storefront_get_sidebar', 10);
+  }
 }
 add_action('get_header', 'remove_storefront_sidebar');
 
@@ -34,10 +34,10 @@ add_action('get_header', 'remove_storefront_sidebar');
  */
 function enqueue_custom_fonts(): void
 {
-    if (!is_admin()) {
-        wp_register_style('eater', 'https://fonts.googleapis.com/css2?family=Eater&display=swap');
-        wp_enqueue_style('eater');
-    }
+  if (!is_admin()) {
+    wp_register_style('eater', 'https://fonts.googleapis.com/css2?family=Eater&display=swap');
+    wp_enqueue_style('eater');
+  }
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
 
@@ -49,23 +49,23 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
  */
 function custom_header_layout(): void
 {
-    remove_action('storefront_header', 'storefront_product_search', 40);
-    remove_action('storefront_header', 'storefront_primary_navigation_wrapper', 42);
-    remove_action('storefront_header', 'storefront_primary_navigation', 1);
-    remove_action('storefront_header', 'storefront_header_cart', 60);
-    remove_action('storefront_header', 'storefront_primary_navigation_wrapper_close', 68);
-    add_action('storefront_header', 'storefront_header_cart', 40);
+  remove_action('storefront_header', 'storefront_product_search', 40);
+  remove_action('storefront_header', 'storefront_primary_navigation_wrapper', 42);
+  remove_action('storefront_header', 'storefront_primary_navigation', 1);
+  remove_action('storefront_header', 'storefront_header_cart', 60);
+  remove_action('storefront_header', 'storefront_primary_navigation_wrapper_close', 68);
+  add_action('storefront_header', 'storefront_header_cart', 40);
 }
 add_action('init', 'custom_header_layout');
 
 function custom_homepage_layout(): void
 {
-		remove_action('storefront_product_categories', 20);
-		remove_action('storefront_recent_products', 30);
-		remove_action('storefront_featured_products', 40);
-		remove_action('storefront_popular_products', 50);
-		remove_action('storefront_on_sale_products', 60);
-		remove_action('storefront_best_selling_products', 70);
+  remove_action('storefront_product_categories', 20);
+  remove_action('storefront_recent_products', 30);
+  remove_action('storefront_featured_products', 40);
+  remove_action('storefront_popular_products', 50);
+  remove_action('storefront_on_sale_products', 60);
+  remove_action('storefront_best_selling_products', 70);
 }
 add_action('init', 'custom_homepage_layout');
 
@@ -74,9 +74,9 @@ add_action('init', 'custom_homepage_layout');
  */
 function unregister_unwanted_parent_sidebars(): void
 {
-    // Remove the side widget that we do not use
-    unregister_sidebar('footer-4');
-    unregister_sidebar('header-1');
+  // Remove the side widget that we do not use
+  unregister_sidebar('footer-4');
+  unregister_sidebar('header-1');
 }
 add_action('widgets_init', 'unregister_unwanted_parent_sidebars', 11);
 
@@ -85,13 +85,13 @@ add_action('widgets_init', 'unregister_unwanted_parent_sidebars', 11);
  */
 function storefront_credit(): void
 {
-    ?>
+?>
   <div class="copyright">
     <p>
       <?php echo esc_html('&copy; ' . date('Y') . ', ' . get_bloginfo('name')); ?>
     </p>
   </div>
-    <?php
+<?php
 }
 
 /**
@@ -103,50 +103,50 @@ function storefront_credit(): void
  */
 function storefront_handheld_footer_bar(): void
 {
-    // The account option has been removed from the
-    // links array to make place for the chat option.
-    $links = array(
-      'search'     => array(
-        'priority' => 10,
-        'callback' => 'storefront_handheld_footer_bar_search',
-      ),
-      'chat'       => array(
-        'priority' => 20,
-        'callback' => 'storefront_handheld_footer_bar_chat_link',
-      ),
-      'cart'       => array(
-        'priority' => 30,
-        'callback' => 'storefront_handheld_footer_bar_cart_link',
-      )
-    );
+  // The account option has been removed from the
+  // links array to make place for the chat option.
+  $links = array(
+    'search'     => array(
+      'priority' => 10,
+      'callback' => 'storefront_handheld_footer_bar_search',
+    ),
+    'chat'       => array(
+      'priority' => 20,
+      'callback' => 'storefront_handheld_footer_bar_chat_link',
+    ),
+    'cart'       => array(
+      'priority' => 30,
+      'callback' => 'storefront_handheld_footer_bar_cart_link',
+    )
+  );
 
-    $enqueue_cart_block_scripts_after = did_action('woocommerce_blocks_enqueue_cart_block_scripts_after');
-    $enqueue_checkout_block_scripts_after = did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after');
+  $enqueue_cart_block_scripts_after = did_action('woocommerce_blocks_enqueue_cart_block_scripts_after');
+  $enqueue_checkout_block_scripts_after = did_action('woocommerce_blocks_enqueue_checkout_block_scripts_after');
 
-    if ($enqueue_cart_block_scripts_after || $enqueue_checkout_block_scripts_after) {
-        return;
-    }
+  if ($enqueue_cart_block_scripts_after || $enqueue_checkout_block_scripts_after) {
+    return;
+  }
 
-    if (wc_get_page_id('cart') === -1) {
-        unset($links['cart']);
-    }
+  if (wc_get_page_id('cart') === -1) {
+    unset($links['cart']);
+  }
 
-    $links = apply_filters('storefront_handheld_footer_bar_links', $links);
-    ?>
-    <div class="storefront-handheld-footer-bar">
-      <ul class="columns-<?php echo count($links); ?>">
-        <?php foreach ($links as $key => $link) : ?>
-          <li class="<?php echo esc_attr($key); ?>">
-            <?php
-            if ($link['callback']) {
-                call_user_func($link['callback'], $key, $link);
-            }
-            ?>
-          </li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-    <?php
+  $links = apply_filters('storefront_handheld_footer_bar_links', $links);
+?>
+  <div class="storefront-handheld-footer-bar">
+    <ul class="columns-<?php echo count($links); ?>">
+      <?php foreach ($links as $key => $link) : ?>
+        <li class="<?php echo esc_attr($key); ?>">
+          <?php
+          if ($link['callback']) {
+            call_user_func($link['callback'], $key, $link);
+          }
+          ?>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+<?php
 }
 
 /**
@@ -156,8 +156,8 @@ function storefront_handheld_footer_bar(): void
  */
 function storefront_handheld_footer_bar_search(): void
 {
-    echo '<a href="javascript:;">' . esc_attr__('Search', 'storefront') . '</a>';
-    storefront_product_search();
+  echo '<a href="javascript:;">' . esc_attr__('Search', 'storefront') . '</a>';
+  storefront_product_search();
 }
 
 /**
@@ -166,5 +166,5 @@ function storefront_handheld_footer_bar_search(): void
  */
 function storefront_handheld_footer_bar_chat_link(): void
 {
-    echo '<a href="javascript:;" class="footer-chat" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
+  echo '<a href="javascript:;" class="footer-chat" onclick="tidioChatApi.display(true);tidioChatApi.open()">Chat</a>';
 }
