@@ -58,6 +58,10 @@ function custom_header_layout(): void
 }
 add_action('init', 'custom_header_layout');
 
+/**
+ * Additional blocks are rendered on the front page that we do not want to
+ * show.
+ */
 function custom_homepage_layout(): void
 {
     remove_action('storefront_product_categories', 20);
@@ -67,7 +71,7 @@ function custom_homepage_layout(): void
     remove_action('storefront_on_sale_products', 60);
     remove_action('storefront_best_selling_products', 70);
 }
-add_action('init', 'custom_homepage_layout');
+add_action('homepage', 'custom_homepage_layout');
 
 /**
  * Remove any widget that will not be used
