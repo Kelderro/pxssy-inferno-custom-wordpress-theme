@@ -74,6 +74,17 @@ function custom_homepage_layout(): void
 add_action('homepage', 'custom_homepage_layout');
 
 /**
+ * Hide the add to basket or see options button on the product when it is
+ * shown in a grid / loop.
+ */
+function show_add_to_cart_button_only_on_product_page(): void
+{
+    remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
+}
+add_action('init', 'show_add_to_cart_button_only_on_product_page');
+
+
+/**
  * Remove any widget that will not be used
  */
 function unregister_unwanted_parent_sidebars(): void
